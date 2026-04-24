@@ -1,0 +1,14 @@
+artifact_uri: file:///home/administrator/smartex_dev/smartex_model/mlruns/269776184855431912/41bc26da191146d6879a952835625ec7/artifacts
+end_time: 1777017441115
+entry_point_name: ''
+experiment_id: '269776184855431912'
+lifecycle_stage: active
+run_id: 41bc26da191146d6879a952835625ec7
+run_name: nimble-tern-428
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777017440939
+status: 4
+tags: []
+user_id: administrator

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/administrator/smartex_dev/smartex_model/mlruns/269776184855431912/e09083ed53534122aa9b894598929307/artifacts
+end_time: 1777018766621
+entry_point_name: ''
+experiment_id: '269776184855431912'
+lifecycle_stage: active
+run_id: e09083ed53534122aa9b894598929307
+run_name: melodic-loon-350
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777018766451
+status: 4
+tags: []
+user_id: administrator

@@ -1,0 +1,144 @@
+data:
+  root_dir: smartex_textile/
+  coco_json: ./data/annotations.json
+  train_split_file: ./data/train.txt
+  test_split_file: ./data/test.txt
+  seed: 32
+  testset: true
+  val_split: 0.2
+  class_list:
+  - polyester
+  - cotton
+  - acrylic
+  - nylon
+  - wool
+  l2_normalization: true
+  use_derivative: true
+  save_processed: false
+  load_processed: false
+  pixel_level:
+    root_dir: ./data/
+    filter_mode: all
+    normalization: zscore
+    n_samples_per_class: 500
+    seed: 32
+    val_split: 0.2
+    class_list:
+    - polyester
+    - cotton
+    - acrylic
+    - nylon
+    - wool
+    sweep:
+      data.pixel_level.filter_mode:
+      - all
+  line_level:
+    root_dir: ./data/
+    filter_mode: all
+    normalization: zscore
+    n_samples_per_class: 24
+    seed: 32
+    val_split: 0.2
+    class_list:
+    - polyester
+    - cotton
+    - acrylic
+    - nylon
+    - wool
+    sweep:
+      data.line_level.filter_mode:
+      - all
+dimensionality_reduction:
+  use_incremental_pca: false
+  pca_components: 0
+  sweep:
+    dimensionality_reduction.pca_components:
+    - 0
+    dimensionality_reduction.use_incremental_pca:
+    - false
+model:
+  type: mlp_chain
+  use_autoencoder: true
+  lr_chain:
+    random_state: 42
+  xgb_chain:
+    n_estimators: 500
+    max_depth: 4
+    learning_rate: 0.05
+  mlp_chain:
+    hidden_layer_sizes:
+    - 64
+    - 32
+    activation: relu
+    alpha: 0.0001
+    solver: adam
+    learning_rate: adaptive
+    learning_rate_init: 0.001
+    max_iter: 80
+    early_stopping: true
+    validation_fraction: 0.2
+  svm:
+    kernel: rbf
+    C: 1.0
+    gamma: scale
+    sweep:
+      model.svm.kernel:
+      - rbf
+      model.svm.C:
+      - 1.0
+  extra_trees:
+    n_estimators: 200
+    max_depth: 20
+    max_features: sqrt
+    min_samples_leaf: 1
+    min_samples_split: 2
+    criterion: gini
+  sweep:
+    model.type:
+    - mlp_chain
+autoencoder:
+  data-agument:
+    noise_scale: 0.02
+    scale_jitter: 0.02
+    max_shift: 0
+    mixup_alpha: 0
+    p_mixup: 0
+  contrastive_mode: none
+  epochs: 30
+  lr: 0.001
+  weight_decay: 1.0e-05
+  latent_dim: 64
+  hidden_dim: 128
+  batch_size: 256
+  num_blocks: 3
+  dropout: 0.15
+  early_stopping_patience: 30
+  verbose: true
+  sweep:
+    autoencoder.latent_dim:
+    - 64
+    autoencoder.epochs:
+    - 30
+    autoencoder.lr:
+    - 0.001
+    autoencoder.contrastive_mode:
+    - none
+    autoencoder.weight_decay:
+    - 1.0e-05
+    autoencoder.data-agument.noise_scale:
+    - 0.02
+    autoencoder.data-agument.scale_jitter:
+    - 0.02
+eval:
+  modes:
+  - pixel
+  - line
+  - cube
+  line_axis: column
+mlflow:
+  tracking_uri: file:./mlruns
+  experiment_name: hyperspectral_baseline
+  sklearn_autolog: true
+  tags:
+    project: Hyperspectral
+    stage: baseline

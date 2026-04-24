@@ -1,0 +1,14 @@
+artifact_uri: file:///home/administrator/smartex_dev/smartex_model/mlruns/269776184855431912/e28bacec27474d8fae5f1de2655baf36/artifacts
+end_time: 1777018824183
+entry_point_name: ''
+experiment_id: '269776184855431912'
+lifecycle_stage: active
+run_id: e28bacec27474d8fae5f1de2655baf36
+run_name: skittish-doe-359
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777018823960
+status: 4
+tags: []
+user_id: administrator

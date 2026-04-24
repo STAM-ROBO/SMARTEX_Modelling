@@ -1,4 +1,4 @@
-# SmartEx Model
+# Smartex Model
 
 A machine learning pipeline for textile data spectral analysis with multiple model architectures, dimensionality reduction, and MLflow experiment tracking.
 
@@ -21,7 +21,8 @@ A machine learning pipeline for textile data spectral analysis with multiple mod
    pip install -r requirements.txt
    ```
 
-2. Configure your dataset paths and experiment settings in `config_ae.yaml`
+2. Download the dataset from https://zenodo.org/records/17223867 and configure your dataset paths and experiment settings in `config_ae.yaml`
+3. Clone the dataset utils repository from https://github.com/STAM-ROBO/smartex_dataset_utils to get splits
 
 3. Set up MLflow tracking URI (optional, required for remote experiment tracking)
 
@@ -31,6 +32,10 @@ A machine learning pipeline for textile data spectral analysis with multiple mod
 - **`create_gkf.py`**: Generate training/evaluation splits and create model configurations
 
 ## Usage
+Generate dataset ingestion files using 
+```bash
+python create_gfk.py
+```
 
 Run a hyperparameter sweep:
 ```bash
